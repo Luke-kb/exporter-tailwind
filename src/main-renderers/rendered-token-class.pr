@@ -37,7 +37,9 @@ Rendered as:
 
 }
 
-{[ if (token.tokenType === "Typography") && (token.value.font.family === "Inter") ]}
+{[ if token.tokenType === "Typography" ]}
+  /* DEBUG: Has font? {{ token.value.font }} */
+  /* DEBUG: Has family? {{ token.value.font.family }} */
 @supports (font-variation-settings: normal) {
   .{[ inject "rendered-name" context token /]}
 
