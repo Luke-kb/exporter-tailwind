@@ -38,15 +38,18 @@ Rendered as:
 }
 
 {[ if token.tokenType === "Typography" ]}
-  {[ if token.value.font.family === "Inter" ]}
-    @supports (font-variation-settings: normal) {
-      .{[ inject "rendered-name" context token /]}
+  /* DEBUG: About to switch on: {{ token.value.font.family }} */
+  {[ switch token.value.font.family ]}
+    {[ case "Inter" ]}
+      /* DEBUG: Matched Inter case! */
+      @supports (font-variation-settings: normal) {
+        .{[ inject "rendered-name" context token /]}
 
-      {[ for alias in findAliases(context.token, context.allTokens) ]}
-      , .{[ inject "rendered-name" context alias /]}
-      {[/]} {
-        font-family: "InterVariable", sans-serif;
+        {[ for alias in findAliases(context.token, context.allTokens) ]}
+        , .{[ inject "rendered-name" context alias /]}
+        {[/]} {
+          font-family: "InterVariable", sans-serif;
+        }
       }
-    }
   {[/]}
 {[/]}
