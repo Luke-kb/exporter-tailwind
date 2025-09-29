@@ -37,7 +37,7 @@ Rendered as:
 
 }
 
-{[ if token.tokenType === "Typography" ]}
+{[ if token.tokenType === "Typography" && token.value.font.family === "Inter" ]}
 @supports (font-variation-settings: normal) {
   .{[ inject "rendered-name" context token /]}
 
