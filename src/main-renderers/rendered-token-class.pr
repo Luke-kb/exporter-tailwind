@@ -26,13 +26,26 @@ Rendered as:
 *}
 {[ let token = context.token /]}
 
-{[ inject "rendered-description" context token /]} 
+{[ inject "rendered-description" context token /]}
 .{[ inject "rendered-name" context token /]}
 
 {[ for alias in findAliases(context.token, context.allTokens) ]}
-, {[ inject "rendered-description" context alias /]} 
+, {[ inject "rendered-description" context alias /]}
 .{[ inject "rendered-name" context alias /]}
 {[/]} {
   {[ inject "rendered-value" context token /]}
 
 }
+
+{[ if token.tokenType === "Typography" ]}
+@supports (font-variation-settings: normal) {
+  .{[ inject "rendered-name" context token /]}
+
+  {[ for alias in findAliases(context.token, context.allTokens) ]}
+  , .{[ inject "rendered-name" context alias /]}
+  {[/]} {
+    font-family: "InterVariable", sans-serif;
+  }
+}
+
+{[/]}

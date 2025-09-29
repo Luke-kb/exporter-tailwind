@@ -55,9 +55,10 @@ Rendered as:
 {[ if ds.isFontItalic(context.font) ]}
   {[ fontStyle = "italic" /]}
 {[/]}
-font-family: "{{ context.font.family }}";
+font-family: "{{ context.font.family }}", sans-serif;
 font-style: {{ fontStyle }};
 font-weight: {{ ds.fontWeight(context.font) }};
+font-feature-settings: "liga" 1, "calt" 1;
 font-size: {[ inject "rendered-measure" context context.fontSize /]};
 {[ if context.lineHeight ]}
 line-height: {[ inject "rendered-measure" context context.lineHeight /]};
