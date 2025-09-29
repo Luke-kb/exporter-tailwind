@@ -38,17 +38,15 @@ Rendered as:
 }
 
 {[ if token.tokenType === "Typography" ]}
-  /* DEBUG: Has font? {{ token.value.font }} */
-  /* DEBUG: Has family? {{ token.value.font.family }} */
-@supports (font-variation-settings: normal) {
-  .{[ inject "rendered-name" context token /]}
+  {[ if token.value.font.family === "Inter" ]}
+    @supports (font-variation-settings: normal) {
+      .{[ inject "rendered-name" context token /]}
 
-  {[ for alias in findAliases(context.token, context.allTokens) ]}
-  , .{[ inject "rendered-name" context alias /]}
-  {[/]} {
-    /* DEBUG: Font family is "{{ token.value.font.family }}" */
-    font-family: "InterVariable", sans-serif;
-  }
-}
-
+      {[ for alias in findAliases(context.token, context.allTokens) ]}
+      , .{[ inject "rendered-name" context alias /]}
+      {[/]} {
+        font-family: "InterVariable", sans-serif;
+      }
+    }
+  {[/]}
 {[/]}
