@@ -44,6 +44,7 @@ Rendered as:
   {[ for alias in findAliases(context.token, context.allTokens) ]}
   , .{[ inject "rendered-name" context alias /]}
   {[/]} {
+    /* DEBUG: Font family is "{{ token.value.font.family }}" */
     font-family: "InterVariable", sans-serif;
   }
 }
