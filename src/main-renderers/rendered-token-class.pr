@@ -38,10 +38,8 @@ Rendered as:
 }
 
 {[ if token.tokenType === "Typography" ]}
-  /* DEBUG: About to switch on: {{ token.value.font.family }} */
   {[ switch token.value.font.family ]}
     {[ case "Inter" ]}
-      /* DEBUG: Matched Inter case! */
       @supports (font-variation-settings: normal) {
         .{[ inject "rendered-name" context token /]}
 
